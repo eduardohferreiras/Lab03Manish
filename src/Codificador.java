@@ -30,15 +30,15 @@ public class Codificador {
 
                 int p1 = b1 + b2 + b3;
                 p1 = p1 % 2;
-                b += Utils.int2hcar(p1);
+                b += Utils.int2char(p1);
 
                 int p2 = b1 + b3 + b4;
                 p2 = p2 % 2;
-                b += Utils.int2hcar(p2);
+                b += Utils.int2char(p2);
 
                 int p3 = b1 + b2 + b4;
                 p3 = p3 % 2;
-                b += Utils.int2hcar(p3);
+                b += Utils.int2char(p3);
 
                 codified += b;
                 b = Character.toString(singleChar);
@@ -52,15 +52,15 @@ public class Codificador {
 
         int p1 = b1 + b2 + b3;
         p1 = p1 % 2;
-        b += Utils.int2hcar(p1);
+        b += Utils.int2char(p1);
 
         int p2 = b1 + b3 + b4;
         p2 = p2 % 2;
-        b += Utils.int2hcar(p2);
+        b += Utils.int2char(p2);
 
         int p3 = b1 + b2 + b4;
         p3 = p3 % 2;
-        b += Utils.int2hcar(p3);
+        b += Utils.int2char(p3);
 
         codified += b;
 
