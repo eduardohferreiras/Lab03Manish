@@ -139,7 +139,7 @@ public class Decodificador {
     {
 
         Decodificador deco = new Decodificador();
-        String msg = "0110011000000001100110000000";
+        String msg = "01100110110011";
         System.out.println(deco.decodificar(msg));
     }
 }

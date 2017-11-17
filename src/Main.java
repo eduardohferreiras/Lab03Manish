@@ -59,15 +59,17 @@ public class Main {
     }
 
     public static void main(String [] args) {
-//        try {
-//            inputGenerator(4, 1);
-//        } catch(IOException e) {}
 
-//        try {
-//            double value = compareTexts("input.txt", "input.txt");
-//            System.out.println(value);
-//        } catch (FileNotFoundException e) {}
+        double m[] = {0.001,0.0002,0.0001,0.000005,0.000002};
+        //double m[] = {0.5, 0.2, 0.1, 0.05, 0.02, 0.01, 0.005, 0.002, 0.0001, 0.00005, 0.00002, 0.00001, 0.00005, 0.00002, 0.000001};
+        //double m [] = {0.5, 0.2, 0.1, 0.05, 0.02, 0.01, 0.005, 0.002, 0.0001, 0.0005, 0.00002, 0.00001, 0.00005, 0.00002, 0.000001};
+        for(int i = 0; i < m.length; i++)
+        {
+            try {
+                double value = compareTexts("input.txt", "redecodificado" + String.valueOf(i) + ".txt");
+                System.out.println(m[i] + " "+ value);
+            } catch (FileNotFoundException e) {}
 
+        }
     }
-
 }

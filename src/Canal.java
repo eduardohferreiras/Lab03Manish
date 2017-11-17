@@ -32,6 +32,7 @@ public class Canal {
 
     public String processarString(String msg){
 
+        msgProcessada = "";
         for(int i = 0; i < msg.length(); i++)
         {
             msgProcessada = msgProcessada.concat(processarErroBit(msg.charAt(i) + ""));
