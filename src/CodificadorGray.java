@@ -22,7 +22,9 @@ public class CodificadorGray {
     public static String codificarString(String text) {
         String codified = "";
         String b = "";
+        String redundancia = "";
         int counter = 0;
+        int redundanciaCounter = 0;
         for (char singleChar : text.toCharArray()) {
             if (counter < 4) {
                 b += singleChar;
@@ -35,15 +37,20 @@ public class CodificadorGray {
 
                 int sum = b4*1000 + b3*100 + b2*10 + b1;
                 int p = CodificadorGray.getPs(sum);
-                System.out.println(sum);
                 int p1 = p%10;
-                int p2 = (p%10) / 10;
-                int p3 = (p%100) / 100;
+                int p2 = (p/10) % 10;
+                int p3 = (p/100) % 10;
 
-                b += Utils.int2char(p1);
-                b += Utils.int2char(p2);
-                b += Utils.int2char(p3);
+                redundancia += Utils.int2char(p3);
+                redundancia += Utils.int2char(p2);
+                redundancia += Utils.int2char(p1);
                 codified += b;
+                redundanciaCounter++;
+                if (redundanciaCounter==2) {
+                    codified += redundancia;
+                    redundancia = "";
+                    redundanciaCounter = 0;
+                }
                 b = Character.toString(singleChar);
                 counter = 1;
             }
@@ -55,16 +62,16 @@ public class CodificadorGray {
 
         int sum = b4*1000 + b3*100 + b2*10 + b1;
         int p = CodificadorGray.getPs(sum);
-        System.out.println(sum);
         int p1 = p%10;
         int p2 = (p/10) % 10;
-        int p3 = (p/100) % 100;
+        int p3 = (p/100) % 10;
 
-        b += Utils.int2char(p1);
-        b += Utils.int2char(p2);
-        b += Utils.int2char(p3);
+        redundancia += Utils.int2char(p3);
+        redundancia += Utils.int2char(p2);
+        redundancia += Utils.int2char(p1);
 
         codified += b;
+        codified += redundancia;
 
         return codified;
     }
@@ -99,7 +106,7 @@ public class CodificadorGray {
 
     public static void main(String [] args) {
 
-        String coded = CodificadorGray.codificarString("00001110");
+        String coded = CodificadorGray.codificarString("0000111000111000");
         System.out.println(coded);
 
 //        try {

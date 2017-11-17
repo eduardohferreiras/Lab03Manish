@@ -19,22 +19,31 @@ public class DecodificadorGray {
 
     public static String decodificarString(String text) {
         String msgDecodificada = "";
-        String msg = "";
-        String redundancia = "";
+        String msg1 = "";
+        String msg2 = "";
+        String redundancia1 = "";
+        String redundancia2 = "";
 
         int counter = 0;
         for (char singleChar : text.toCharArray()) {
             if (counter < 4) {
-                msg += singleChar;
+                msg1 += singleChar;
+            } else if (counter < 8) {
+                msg2 += singleChar;
+            } else if (counter < 11) {
+                redundancia1 += singleChar;
             } else {
-                redundancia += singleChar;
+                redundancia2 += singleChar;
             }
 
             counter ++;
-            if (counter == 7) {
-                msgDecodificada += DecodificadorGray.decodificarSingle(msg, redundancia);
-                msg = "";
-                redundancia = "";
+            if (counter == 14) {
+                msgDecodificada += DecodificadorGray.decodificarSingle(msg1, redundancia1);
+                msgDecodificada += DecodificadorGray.decodificarSingle(msg2, redundancia2);
+                msg1 = "";
+                redundancia1 = "";
+                msg2 = "";
+                redundancia2 = "";
                 counter = 0;
             }
         }
@@ -110,7 +119,7 @@ public class DecodificadorGray {
     }
 
     public static void main(String [] args) {
-        String coded = DecodificadorGray.decodificarString("00000001110111");
+        String coded = DecodificadorGray.decodificarString("0000111000011100111000001100");
         System.out.println(coded);
     }
 
